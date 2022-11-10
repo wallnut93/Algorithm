@@ -1,11 +1,12 @@
-import lv0.q021_q030.Q024;
+import lv0.q031_q040.Q040;
 
 public class Main {
 	public static void main(String[] args) {
 		
-		Q024 q = new Q024();
+		Q040 q = new Q040();
 		
-		int n[] = {200,1,199};
-		System.out.println(q.solution(n));
+		String s1[] = {"a", "b", "c"};
+		String s2[] = {"com", "b", "d", "p", "c"};
+		System.out.println(q.solution("bus"));
 	}
 }
