@@ -1,12 +1,12 @@
-import lv0.q031_q040.Q040;
+import java.util.Arrays;
+
+import lv0.q041_q050.Q049;
 
 public class Main {
 	public static void main(String[] args) {
 		
-		Q040 q = new Q040();
-		
-		String s1[] = {"a", "b", "c"};
-		String s2[] = {"com", "b", "d", "p", "c"};
-		System.out.println(q.solution("bus"));
+		Q049 q = new Q049();
+		int arr[] = {1,2,3,4,5,6};
+		System.out.println(Arrays.toString(q.solution(24)));
 	}
 }
