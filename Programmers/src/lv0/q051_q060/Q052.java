@@ -14,7 +14,7 @@ public class Q052 {
         String answer = "";
         for(char c : s.toCharArray()) {
         	answer += (char)(c+49);
-        } 
+        }
         return answer;
     }
 }

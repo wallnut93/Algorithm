@@ -13,7 +13,7 @@ public class Q056 {
         for(int i = 0; i < numbers.length; i++) {
         	answer[i] = numbers[index];
         	index = (index == numbers.length -1)? 0 : index+1;
-        } 
+        }
         return answer;
     }
 }
