@@ -10,11 +10,9 @@ public class Q057 {
 	
 	public String solution(String cipher, int code) {
         String answer = "";
-        code -= 1;
-        while(code <= cipher.length()) {
-        	answer += cipher.toCharArray()[code];
-        	code += code;
-        }
+        
+         
+        
         return answer;
     }
 }

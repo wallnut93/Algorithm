@@ -11,7 +11,7 @@ public class Q051 {
         int answer = 1;
         for(int i : box) {
         	answer *= (int)(i/n);
-        }
+        } 
         return answer;
     }
 }
