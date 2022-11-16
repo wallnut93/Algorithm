@@ -7,17 +7,12 @@ public class Q063 {
 	 */
 	
 	public int solution(String before, String after) {
-		int index = 0;
-		int lastIndex = after.length()-1;
-		
-		while(index < before.length()) {
-			if(before.charAt(index) != after.charAt(lastIndex)) {
-				return 0;				
-			}else {
-				index++;
-				lastIndex--;
-			}
+		int sum1 = 0;
+		int sum2 = 0;
+		for(int i = 0; i < before.length(); i++) {
+			sum1 += before.charAt(i);
+			sum2 += after.charAt(i);
 		}
-		return 1;
+		return (sum1 == sum2)? 1 : 0;
     }
 }
