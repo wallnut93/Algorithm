@@ -9,10 +9,12 @@ public class Q057 {
 	 */
 	
 	public String solution(String cipher, int code) {
-        String answer = "";
-        
-        
-        
+		String answer = "";
+		int index = code-1;
+        while(index < cipher.length()) {
+        	answer += cipher.toCharArray()[index];
+        	index += code;
+        }
         return answer;
     }
 }
