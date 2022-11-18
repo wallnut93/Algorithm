@@ -10,15 +10,12 @@ public class Q069 {
 	 */
 	
 	public int[] solution(int[] emergency) {
-		int answer[] = new int[emergency.length];
-		for(int i  =0; i < emergency.length; i++) {
-			answer[i] = emergency[i];
-		}
-		
+		int answer[] = Arrays.copyOf(emergency, emergency.length);
 		Map<Integer, Integer> map = new HashMap<>();
 		Arrays.sort(emergency);
+		
 		for(int i = 0 ; i < emergency.length; i++) {
-			map.put(emergency[i], emergency.length-i); //오름차순 순서대입
+			map.put(emergency[i], emergency.length-i);
 		}
 		
 		for(int i = 0; i < answer.length; i++) {
