@@ -10,22 +10,20 @@ public class Q069 {
 	 */
 	
 	public int[] solution(int[] emergency) {
-		Integer arr[] = new Integer[emergency.length];
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < emergency.length; i++) {
-        	map.put(emergency[i], i);
-        	arr[i] = emergency[i];
-        }
-        
-        Arrays.sort(arr, Collections.reverseOrder());
-        for(int i = 0; i < arr.length; i++) {
-        	arr[i] = map.get(arr[i]);
-        }
-        
-        int answer[] = new int[arr.length];
-        for(int i = 0; i < arr.length; i++) {
-        	answer[i] = arr[i];
-        }
+		int answer[] = new int[emergency.length];
+		for(int i  =0; i < emergency.length; i++) {
+			answer[i] = emergency[i];
+		}
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		Arrays.sort(emergency);
+		for(int i = 0 ; i < emergency.length; i++) {
+			map.put(emergency[i], emergency.length-i); //오름차순 순서대입
+		}
+		
+		for(int i = 0; i < answer.length; i++) {
+			answer[i] = map.get(answer[i]);
+		}
         return answer;
     }
 }
