@@ -11,5 +11,18 @@ public class Q078 {
 	 * 잘못된 수식은 주어지지 않습니다.
 	 */
 	
-	
+	public int solution(String my_string) {
+		String sArr[] = my_string.split(" ");
+        int answer = Integer.parseInt(sArr[0]);
+        for(int i = 0; i < sArr.length; i++) {
+        	if(sArr[i].equals("+")) {
+        		answer += Integer.parseInt(sArr[i+1]);
+        	}else if(sArr[i].equals("-")){
+        		answer -= Integer.parseInt(sArr[i+1]);
+        	}else {
+        		continue;
+        	}
+        }
+        return answer;
+    }
 }
