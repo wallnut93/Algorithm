@@ -10,16 +10,19 @@ public class Q079 {
 	 */
 	
     public int solution(int balls, int share) {
-    	return factorial(balls) / (factorial(balls-share) * factorial(share));
+    	return count(balls, share);
     }
     
-    public int factorial(int n) {
-    	if(n < 1 ) {
-    		System.out.println(n);
-    		return 1;
-    	}else {
-    		System.out.println(n);
-    		return factorial(n-1)*n;
-    	}
-    }
+    public int count(int a, int b) {
+    	if(a == b || b == 0) return 1;
+    	else return count(a - 1, b -1) + count(a - 1, b);
+	}
+    //5,3 (123 124 125 134 135 145/6)3! + (234 235 245/3) + 345/1
+    //												c4,2 + c 4,3
+    //				 		  			 	 c3,1 + c3,2 + c3,2 + c3,3(1) = 1
+    //			 	 	 c2,0(1) + c2,1 + c2,1 + c2,2(1) + c2,1 + c2,2(1) = 3
+    //		   	 c1,0(1) + c1,1(1) + c1,0(1) + c(1,1)(1) + c1,0(1) + c1,1(1) = 6
+    
+    //*참조 -> 
+    // https://velog.io/@jsj3282/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EA%B5%AC%EC%8A%AC%EC%9D%84-%EB%82%98%EB%88%84%EB%8A%94-%EA%B2%BD%EC%9A%B0%EC%9D%98-%EC%88%98
 }

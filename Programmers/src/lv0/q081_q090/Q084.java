@@ -9,30 +9,11 @@ public class Q084 {
 	 *두 정수 a와 b가 매개변수로 주어질 때, a/b가 유한소수이면 1을, 무한소수라면 2를 return하도록 solution 함수를 완성해주세요. 
 	 */
 	
+	//b의 값이 2또는 5만 나오면 됨(a는 볼필요 없음)
 	public int solution(int a, int b) {
-		if(a != 1 && b != 1) {
-			return gongyagsu(a, b);
-		}else {
-			return 2;
+		while(true) {
+			
+			return (b == 2 || b == 5)? 1 : 2;
 		}
-    }
-	
-	public int gongyagsu(int a, int b) {
-		if(a%2 == 0 && b%2 == 0) {
-			a /= 2;
-			b /= 2;
-		}else if(a%3 == 0 && b%3 == 0) {
-			a /= 3;
-			b /= 3;
-		}else if(a%5 == 0 && b%5 == 0) {
-			a /= 5;
-			b /= 5;
-		}else if(a%7 == 0 && b%7 == 0) {
-			a /= 7;
-			b /= 7;
-		}else {
-			return 2;
-		}
-		return gongyagsu(a,b);
 	}
 }
