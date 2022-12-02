@@ -1,13 +1,10 @@
-import lv0.q071_q080.Q079;
+import lv0.q081_q090.Q084;
 
 public class Main {
 	public static void main(String[] args) {
 		
-//		Q079 q = new Q079();		
+		Q084 q = new Q084();		
 //		String arr1[] = {"aya", "yee", "u", "maa", "wyeoo"};
-//		System.out.println(q.solution(3,2));
-		
-		
-		System.out.println(7/1);
+		System.out.println(q.solution(11, 22));
 	}
 }
