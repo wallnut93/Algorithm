@@ -11,7 +11,6 @@ public class Q080 {
 	 */
 	
 	public int solution(String[] spell, String[] dic) {
-        int answer = 0;
         List<String> list = new ArrayList<String>();
         for(String dicString : dic) {
         	list.add(dicString);
