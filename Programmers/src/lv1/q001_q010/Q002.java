@@ -1,8 +1,5 @@
 package lv1.q001_q010;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Q002 {
     /*
      * 숫자나라 기사단의 각 기사에게는 1번부터 number까지 번호가 지정되어 있습니다.

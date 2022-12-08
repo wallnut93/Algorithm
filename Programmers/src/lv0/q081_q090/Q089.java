@@ -1,6 +1,8 @@
 package lv0.q081_q090;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Q089 {
 	/*
@@ -10,21 +12,36 @@ public class Q089 {
 	 */
 	
 	public int[] solution(int[] numlist, int n) {
-		int answer[] = Arrays.copyOf(numlist, numlist.length);
-		for(int i = 0; i < answer.length; i++) {
-			for(int j = 0; j < numlist.length; j++) {
-				int num1 = Math.abs(n - numlist[i]);
-				int num2 = Math.abs(n - numlist[j]);
-				
-				if(num1 > num2) {
-					answer[i] = numlist[i];
-				}else if(num1 == num2) {
-					answer[i] = (numlist[i] > numlist[j])? numlist[i] : numlist[j];
-				}else {
-					answer[i] = numlist[j];
+		Map<Double, Integer> map = new HashMap<>();
+		for(int i = 0; i < numlist.length; i++){
+			int abs = Math.abs(n - numlist[i]);
+			if(!map.containsKey((double)abs)){
+				map.put((double)abs, numlist[i]);
+			}else{
+				int value = map.get((double)abs);
+				if(value > numlist[i]){
+					map.put((double)abs + 0.1, numlist[i]);
+				}else{
+					map.put((double)abs + 0.1, value);
+					map.put((double)abs, numlist[i]);
 				}
 			}
 		}
-        return answer;
+
+		String s = "";
+		for(double key : map.keySet()){
+			s += (key + ",");
+		}
+		
+		double[] arr = new double[numlist.length];
+		for(int i = 0; i < arr.length; i++){
+			arr[i] = Double.parseDouble(s.split(",")[i]);
+		}
+		Arrays.sort(arr);
+		
+		for(int i = 0; i < arr.length; i++){
+			numlist[i] = map.get(arr[i]);
+		}
+        return numlist;
     }
 }
