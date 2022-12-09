@@ -1,6 +1,7 @@
 package lv0.q081_q090;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,26 +13,28 @@ public class Q090 {
 	 */
 	
 	public int[] solution(int[][] score) {
-        int[] answer = new int[score.length];
-        for(int i = 0; i < answer.length; i++) {
-        	answer[i] = (score[i][0]+score[i][1])/2;
-        }
-        
-        int arr[] = Arrays.copyOf(answer, answer.length);
-        Arrays.sort(arr);
-        Map<Integer, Integer> map = new HashMap<>();
-        
-        for(int i = arr.length-1; i >= 0; i--) {
-        	if(!map.containsKey(arr[i])) {
-        		map.put(arr[i], map.size()+1);
-        	}else {
-        		if(map.containsKey(arr[i])) {
-        			map.put(arr[i], map.get(arr[i-1]));        			
-        		}else {
-        			map.put(arr[i], map.size()+1);
-        		}
-        	}
-        }
+		int[] answer = new int[score.length];
+		Integer[] rank = new Integer[score.length];
+		for(int i = 0; i < score.length; i++){
+			int sum = score[i][0] + score[i][1];
+			answer[i] = sum;
+			rank[i] = sum;
+		}
+
+		Arrays.sort(rank, Collections.reverseOrder());
+		Map<Integer, Integer> map = new HashMap<>();
+
+		for(int i = 0; i < rank.length; i++){
+			if(map.containsKey(rank[i])){
+				continue;
+			}else{
+				map.put(rank[i], i+1);
+			}
+		}
+
+		for(int i = 0; i < answer.length; i++){
+			answer[i] = map.get(answer[i]);
+		}
         return answer;
     }
 }
