@@ -1,5 +1,8 @@
 package lv0.q091_q100;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Q099 {
 	/*
 	 * 점 네 개의 좌표를 담은 이차원 배열  dots가 다음과 같이 매개변수로 주어집니다.
@@ -7,23 +10,18 @@ public class Q099 {
 	 * 주어진 네 개의 점을 두 개씩 이었을 때, 두 직선이 평행이 되는 경우가 있으면 1을 없으면 0을 return 하도록 solution 함수를 완성해보세요.
 	 */
 	
+	// y증가량 / x 증가량 = 기울기
 	public int solution(int[][] dots) {
-		// 1 3, 2 4 / 1 2, 3 4 / 1 4, 2 3
-		String s1 = "";
-		String s2 = "";
-		
-		s1 += (dots[0][0] - dots[1][0]) + " " + (dots[0][1] - dots[1][1]);
-		s2 += (dots[2][0] - dots[3][0]) + " " + (dots[2][1] - dots[3][1]);
-		if(s1.equals(s2)) return 1;
-		
-		s1 += (dots[0][0] - dots[2][0]) + " " + (dots[0][1] - dots[2][1]);
-		s2 += (dots[0][0] - dots[3][0]) + " " + (dots[0][1] - dots[3][1]);
-		if(s1.equals(s2)) return 1;
-			  
-		s1 += (dots[1][0] - dots[3][0]) + " " + (dots[1][1] - dots[3][1]);
-		s2 += (dots[1][0] - dots[2][0]) + " " + (dots[1][1] - dots[2][1]);
-		if(s1.equals(s2)) return 1;
-		
+		List<Double> giulgis = new ArrayList<>();
+		for(int i = 0; i < dots.length -1; i++){
+			for(int j = i + 1; j < dots.length; j++){
+				int x = dots[j][0] - dots[i][0];
+				int y = dots[j][1] - dots[i][1];
+
+				if(giulgis.size() > dots.length - 1 && giulgis.contains((double)y / (double)x)) return 1;
+				else giulgis.add((double)y / (double)x);
+			}
+		}
         return 0;
     }
 }
