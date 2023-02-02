@@ -32,38 +32,31 @@ public class Q050 {
 	}
 	
 	static public int[] solution(int[] answers) {
-        String[] supojas = {"12345","21232425", "3311224455"};
-        String scores= "";
+        int[][] supojas = { {1, 2, 3, 4, 5},
+        					{2, 1, 2, 3, 2, 4, 2, 5},
+        					{3, 3, 1, 1, 2, 2, 4, 4, 5, 5} };
+        int[] scores = new int[supojas.length];
         int highScore = 0;
         
         for(int i = 0; i < supojas.length; i++) {
-        	int score = getScore(supojas[i], answers);
-        	scores +=  score + ",";
-        	highScore = Math.max(highScore, score);
+        	scores[i] = getScore(answers, supojas[i]);
+        	highScore = Math.max(highScore, getScore(answers, supojas[i]));
         }
         
-        String rank = "";
-        for(int i = 1; i <= supojas.length; i++) {
-        	String score = scores.split(",")[i-1];
-        	rank += (score.compareTo(String.valueOf(highScore)) >= 0)? i : "";
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < scores.length; i++) {
+        	if(highScore == scores[i]) list.add(scores[i]);
         }
         
-        int[] answer = new int[rank.length()];
-        for(int i = 0; i < answer.length; i++) {
-        	answer[i] = Integer.parseInt(rank.split("")[i]);
-        }
-        
-        return answer;
+        return list.stream().mapToInt(i->i).toArray();
     }
 	
-	public static int getScore(String supoja, int[] answers) {
+	static public int getScore(int[] answers, int[] supoja) {
 		int score = 0;
 		int index = 0;
-		
 		for(int i = 0; i < answers.length; i++) {
-			int a = Integer.parseInt(supoja.split("")[index]);
-			score += (answers[i] == a)? 1 : 0;
-			index = (index < supoja.length())? index + 1 : 0;
+			score += (answers[i] == supoja[index])? 1 : 0;
+			index += (index < supoja.length - 1)? 1 : 0;
 		}
 		
 		return score;
