@@ -1,9 +1,8 @@
 package lv1.q041_050;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Stack;
 
 public class Q050 {
 	/*
@@ -26,39 +25,42 @@ public class Q050 {
 	 */
 	
 	public static void main(String[] args) {
-		
 		int[] arr = {1,2,3,4,5};
 		System.out.println(solution(arr));
 	}
 	
 	static public int[] solution(int[] answers) {
-        int[][] supojas = { {1, 2, 3, 4, 5},
-        					{2, 1, 2, 3, 2, 4, 2, 5},
-        					{3, 3, 1, 1, 2, 2, 4, 4, 5, 5} };
-        int[] scores = new int[supojas.length];
-        int highScore = 0;
-        
-        for(int i = 0; i < supojas.length; i++) {
-        	scores[i] = getScore(answers, supojas[i]);
-        	highScore = Math.max(highScore, getScore(answers, supojas[i]));
-        }
-        
-        List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < scores.length; i++) {
-        	if(highScore == scores[i]) list.add(scores[i]);
-        }
-        
-        return list.stream().mapToInt(i->i).toArray();
+		int[][] supojas = {
+				{1, 2, 3, 4, 5}, 
+				{2, 1, 2, 3, 2, 4, 2, 5}, 
+				{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
+		int highScore = 0;
+		int[] scores = new int[supojas.length];
+		
+		for(int i = 0; i < supojas.length; i++) {
+			System.out.println(getScore(answers, supojas[i]));
+			scores[i] = getScore(answers, supojas[i]);
+			highScore = Math.max(highScore, scores[i]);
+		}
+		
+		List<Integer> list = new ArrayList<>();
+		for(int i = 0; i < scores.length; i++) {
+			if(highScore == scores[i]) list.add(i + 1);
+		}
+		
+		int[] answer = new int[list.size()];
+		for(int i = 0; i < list.size(); i++) {
+			answer[i] = list.get(i);
+		}
+		
+        return answer;
     }
 	
 	static public int getScore(int[] answers, int[] supoja) {
 		int score = 0;
-		int index = 0;
 		for(int i = 0; i < answers.length; i++) {
-			score += (answers[i] == supoja[index])? 1 : 0;
-			index += (index < supoja.length - 1)? 1 : 0;
+			score += (answers[i] == supoja[i % supoja.length])? 1 : 0;
 		}
-		
 		return score;
 	}
 }
