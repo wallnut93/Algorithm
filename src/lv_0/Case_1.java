@@ -9,7 +9,7 @@ public class Case_1 {
      * 문자열을 return 하는 solution 함수를 작성해 주세요.
      */
 
-     public String solution(String my_string, int[] index_list) {
+    public String solution(String my_string, int[] index_list) {
         String answer = "";
         for(int index : index_list){
             answer += my_string.charAt(index);
