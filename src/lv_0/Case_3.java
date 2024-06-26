@@ -30,4 +30,28 @@ public class Case_3 {
 
         return my_string;
     }
+
+    /*
+     * 다른 풀이 : 훨씬 빠르다..
+     */
+
+     /*
+     public String solution(String my_string, int[][] queries) {
+        char[] arr = my_string.toCharArray();
+
+        for (int[] query : queries) {
+            int index1 = query[0];
+            int index2 = query[1];
+
+            while(index1 < index2){
+                char tmp = arr[index1];
+                //후위 연산으로 arr[index] 변경 후 index 연산함
+                arr[index1++] = arr[index2];
+                arr[index2--] = tmp;
+            }
+        }
+
+        return new String(arr);
+    }
+     */
 }
